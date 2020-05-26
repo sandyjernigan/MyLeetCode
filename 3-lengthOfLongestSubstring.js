@@ -45,8 +45,9 @@ var lengthOfLongestSubstring = function(s) {
   // variables
   let start = 0
   let checkString = s.charAt(0)
-  let checkArray = []
+  // let checkArray = []
   let checkSet = new Set()
+  let longestString = ""
 
   // Check if initial string has any characters
   if (s.length == 0) { return 0 }
@@ -61,14 +62,18 @@ var lengthOfLongestSubstring = function(s) {
       // if not unique move start up 1 character
       start += 1
     } else {
+      // check if longest
+      if (longestString.length < checkString.length) {
+        longestString = checkString
+      }
       // push all unique strings to array
-      checkArray.push(checkString)
+      // checkArray.push(checkString)
     }
   }
 
   // Check array of unique strings for longest
-  let longestString = checkArray.reduce((r, e) => r.length < e.length ? e : r);
-  // console.log(longestString)
+  // let longestString = checkArray.reduce((r, e) => r.length < e.length ? e : r);
+  console.log(longestString)
 
   // Return the length of the longest substring
   return longestString.length
@@ -82,68 +87,3 @@ console.log(lengthOfLongestSubstring(example4)) // excepted output 1
 console.log(lengthOfLongestSubstring(example5)) // excepted output 0
 console.log(lengthOfLongestSubstring(example6)) // excepted output 3
 console.log(lengthOfLongestSubstring(example7)) // excepted output 2
-
-
-
-    // Check if character to check is in the test string
-    // if (checkString.includes(s.charAt(i))) {
-    //   start = i
-    //   checkString = s.charAt(i)
-    // } else {
-    //   checkString = s.substring(start, i + 1)
-    //   console.log(checkString)
-    //   checkArray.push(checkString)
-    // }
-
-  //   console.log(checkString)
-
-  //   console.log(new Set(checkString))
-
-  //   // check if longest string    
-  //   if (newString.length < checkString.length) {
-  //     newString = checkString
-  //     console.log (newString)
-  //   }
-
-
-  /* This returns a subsequence not substring
-   let newString = new Set(s)
-   return newString.size
-  */
-
-  /* Having issues with this breaking
-  // Start and end substring pointers
-  let start = 0
-  // variable for string
-  let newString = s.charAt(0)
-  // variable for string to check
-  let checkString = s.charAt(0)
-
-  // Loop thru String
-  for (i = 1; i < (s.length); i++) {
-
-    // Get the string to check
-    checkString = s.substring(start, i)
-
-    console.log(start + " " + i + " " + checkString)
-    console.log(s.charAt(i))
-
-    // Check if character to check is in the test string
-    if (checkString.includes(s.charAt(i))) {
-      start = i
-      checkString = s.charAt(i)
-    } else {
-      checkString = s.substring(start, i + 1)
-      console.log(checkString)
-    }
-
-    // check if longest string    
-    if (newString.length < checkString.length) {
-      newString = checkString
-      console.log (newString)
-    }
-  }
-
-  // Return the length of the longest substring
-  return newString.length
-*/
