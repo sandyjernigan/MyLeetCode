@@ -17,8 +17,9 @@
   Input: [1,1,1,3,3,4,3,2,4,2]
   Output: true
  */
-let nums = [1,2,3,1]
+let nums = []
 
+nums = [1,2,3,1]
 var containsDuplicate = function(nums) {
   // interate over array
   while (nums.length > 0) {
@@ -29,6 +30,16 @@ var containsDuplicate = function(nums) {
   }
   return false
 };
-
 console.log(containsDuplicate(nums))
-document.write(containsDuplicate(nums))
+
+// Another Solution
+
+nums = [1,2,3,1]
+var containsDuplicate2 = function(nums) {
+  // Get length of array
+  // Check length against the size of the Set (set will only display unique values)
+  return !(nums.length == new Set(nums).size);
+};
+console.log(containsDuplicate2(nums))
+
+
